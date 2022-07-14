@@ -25,27 +25,10 @@ class Message extends Controller
         $period_end = $request->get('period_end');
         $period_group_unit = $request->get('period_group_unit');
         $result = $this->messageService->total($period_start, $period_end, $period_group_unit);
-        return json_encode($result);
+        return response()->json($result);
     }
 
-    public function getDataForChart(MessageTotalRequest  $request) {
-        $period_start = $request->get('period_start');
-        $period_end = $request->get('period_end');
-        $period_group_unit = $request->get('period_group_unit');
-        $result = $this->messageService->total($period_start, $period_end, $period_group_unit);
-        $responseData = [
-            'labels' => [],
-            'data' => []
-        ];
-        if ($result) {
-            foreach ($result as $item) {
-                $responseData['labels'][] = date('Y-m-d', strtotime( $item['period_start'])) .'-'. date('Y-m-d', strtotime( $item['period_end']));
-                $responseData['data'][] = $item['message_number'];
-            }
-        }
 
-        return response()->json($responseData);
-    }
 
     public function userActivity (UserActivityRequest $request) {
         $period_start = $request->get('period_start');

@@ -18,5 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('message/total', [\App\Http\Controllers\Message::class,'total'])->name('message_total');
-Route::post('message/ajax-total', [\App\Http\Controllers\Message::class,'getDataForChart'])->name('ajax_message_total');
 Route::get('message/user-activity', [\App\Http\Controllers\Message::class,'userActivity'])->name('user_activity');

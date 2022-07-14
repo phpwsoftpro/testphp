@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::post('message/ajax-total', [\App\Http\Controllers\Api\Message::class,'getDataForChart'])->name('ajax_message_total');
 

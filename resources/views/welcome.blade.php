@@ -29,9 +29,10 @@
                     $event.preventDefault();
                     var dataForm = $(this).serialize();
                     $.ajax({
-                        url: '/message/ajax-total',
+                        url: '{{ route('ajax_message_total') }}',
                         type: 'post',
                         data: dataForm,
+                        dataType: 'json',
                         success: function (response) {
                             console.log(myChart);
                             if (myChart) {
